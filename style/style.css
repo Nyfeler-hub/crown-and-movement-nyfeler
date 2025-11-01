@@ -1,36 +1,107 @@
 /*raymond philippe nyfeler 31.10.25*/
+html {
+    scroll-behavior: smooth; /*change les ancres en scroll*/
+}
 body {
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-color: #1c1b1b;
+    background-color: #0F0F0F;
 }
-.indexHero{
-    background-image: url('../images/backgroundImage3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-attachment: scroll;
+.indexHero {
+    position: relative;
     width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 2rem;
-}
-.indexHero h1{
-    padding-top: 25%;
-    padding-right: 20%;
-    font-size: 4rem;
-}
-.indexHero h2{
-    align-items: end;
-    font-size: 4rem;
 }
 
+.indexHero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.carouselWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carouselTrack {
+    display: flex;
+    width: calc(100% * 2);
+    height: 100%;
+    animation: slidePause 18s ease-in-out infinite;
+}
+
+.slide {
+    flex: 0 0 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide1 {
+    background-image: url('../images/backgroundImage3.jpg');
+}
+.slide2 {
+    background-image: url('../images/indexBackground2.JPG');
+}
+.slide3 {
+    background-image: url('../images/movementImage.jpg');
+}
+
+@keyframes slidePause {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-100vw); }   /* quick slide to image 2 */
+    30% { transform: translateX(-100vw); }   /* pause */
+    40% { transform: translateX(-200vw); }   /* quick slide to image 3 */
+    60% { transform: translateX(-200vw); }   /* pause */
+    70% { transform: translateX(-300vw); }   /* quick slide back to duplicate */
+    100% { transform: translateX(-300vw); }  /* hold */
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+.heroTagline {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #e4e2e2;
+}
+
+.heroContent h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.heroContent .cta {
+    margin-top: 7rem; /* increase from 4rem or whatever you had */
+}
+
+.heroContent h2 {
+    font-size: 2rem;
+    margin: 0;
+}
 .cta {
     display: flex;
     flex-direction: column;
@@ -44,7 +115,7 @@ body {
 .cta:hover {
     transform: translateY(-5px);
     opacity: 0.9;
-    }
+}
 
 .menuBtn {
     position: fixed;
@@ -54,7 +125,7 @@ body {
     cursor: pointer;
     z-index: 20;
     color: white;
-    background: rgba(0, 0, 0, 0.4);
+    /*background: rgba(0, 0, 0, 0.4);*/
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -67,38 +138,52 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    transition: left 0.3s ease;
-    padding-top: 60px;
+    transition: left 0.4s ease, opacity 0.4s ease;
+    opacity: 0; /* start hidden */
+    padding: 6rem 2rem;
     z-index: 15;
 }
 .sideDrawer nav {
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .sideDrawer a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
 }
 
 .sideDrawer a:hover {
-    text-decoration: underline;
+    color: #D4A029;
 }
 
 #drawerToggle:checked ~ .sideDrawer {
     left: 0;
-    }
-header, footer {
-    position: absolute;
-    color: white;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    padding: 20px 280px;
+    opacity: 1;
 }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem) clamp(2rem, 8vw, 10rem);
+    z-index: 100;
+    background: transparent;
+}
+
+header img {
+    z-index: 101;
+    position: relative;
+    margin-left: 6rem;
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -140,7 +225,7 @@ h2{
     max-width: 300px;
     text-align: center;
     background: black;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
@@ -158,12 +243,12 @@ h2{
 .imageCard p {
     margin: 0;
     padding: 1rem 0;
-    background: black;
+    background: #1A1A1A;
     color: white;
     font-size: 1rem;
 }
 .imageCard:hover {
     border-color: #D4A029;
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(212, 160, 41, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 0 8px rgba(212, 160, 41, 0.25);
 }

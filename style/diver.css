@@ -1,0 +1,237 @@
+html {
+    scroll-behavior: smooth;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: black; /* keep your dark theme consistent */
+}
+.menuBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    color: white;
+    /*background: rgba(0, 0, 0, 0.4);*/
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.sideDrawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    /* Frosted glass background */
+    background: rgba(15, 15, 15, 0.3);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    color: white;
+    transition: left 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0; /* start hidden */
+    padding: 6rem 2rem;
+    z-index: 15;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.sideDrawer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.sideDrawer a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sideDrawer a:hover {
+    color: #D4A029;
+    transform: translateX(6px);
+}
+
+
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    animation: drawerFocus 1.5s ease;
+}
+@keyframes drawerFocus {
+    0% {
+        box-shadow: 0 0 0 rgba(0, 170, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+    }
+    100% {
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem) clamp(2rem, 8vw, 10rem);
+    z-index: 100;
+    background: transparent;
+}
+
+header img {
+    z-index: 101;
+    position: relative;
+    margin-left: 6rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: none;
+}
+/* Hero Section */
+.diverHero {
+    height: 100vh;
+    background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%),
+            url("../images/divingWoman.jpg") center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.diverHeroLink {
+    text-decoration: none;
+    color: white;
+}
+
+.diverHeroLink h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.3s ease;
+}
+
+.diverHeroLink:hover h1 {
+    opacity: 0.8;
+}
+
+/* Collection Section */
+.contentSection {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    margin: 100px auto;
+}
+
+/* Boxes */
+.contentBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%; /* 70–80% of screen width */
+    background-color: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contentBox:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Text */
+.contentText {
+    flex: 0 0 70%;
+    padding: 50px;
+}
+
+.contentText h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.contentText p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #dcdcdc;
+    margin-bottom: 25px;
+}
+
+.learnMore {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.learnMore:hover {
+    color: #66ccff;
+}
+
+/* Image containers */
+.contentImage {
+    flex: 0 0 30%;
+    height: 40vh; /* responsive height: 40% of viewport height */
+    overflow: hidden;
+    border-radius: 0 2rem 2rem 0; /* rounded right corners */
+}
+
+/* when image is on the left, round opposite corners */
+.imageLeft .contentImage {
+    border-radius: 2rem 0 0 2rem;
+}
+
+.contentImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    .contentBox {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .contentImage {
+        flex: 0 0 auto;
+        height: 30vh; /* smaller height on mobile */
+        border-radius: 2rem 2rem 0 0; /* rounded top corners when stacked */
+    }
+
+    .contentText {
+        padding: 3rem 2rem;
+    }
+
+    .contentText h2 {
+        font-size: 1.8rem;
+    }
+}

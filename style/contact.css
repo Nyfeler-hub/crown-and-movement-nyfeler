@@ -1,0 +1,231 @@
+html {
+    scroll-behavior: smooth;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: black;
+}
+
+/* === HEADER === */
+.menuBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    color: white;
+    /*background: rgba(0, 0, 0, 0.4);*/
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.sideDrawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    /* Frosted glass background */
+    background: rgba(15, 15, 15, 0.3);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    color: white;
+    transition: left 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0; /* start hidden */
+    padding: 6rem 2rem;
+    z-index: 15;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.sideDrawer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.sideDrawer a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sideDrawer a:hover {
+    color: #D4A029;
+    transform: translateX(6px);
+}
+
+
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    animation: drawerFocus 1.5s ease;
+}
+@keyframes drawerFocus {
+    0% {
+        box-shadow: 0 0 0 rgba(0, 170, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
+    }
+    100% {
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem) clamp(2rem, 8vw, 10rem);
+    z-index: 100;
+    background: transparent;
+}
+
+header img {
+    z-index: 101;
+    position: relative;
+    margin-left: 6rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: none;
+}
+/* === MAIN CONTACT SECTION === */
+.contactMain {
+    margin-top: 100px; /* offset for header */
+    margin-left: 250px; /* offset for side menu */
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.contactSection {
+    background-color: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    width: 60%;
+    max-width: 700px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.contactSection h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contactSection p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* === FORM STYLING === */
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #dcdcdc;
+}
+
+.contactForm input,
+.contactForm textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    color: white;
+    font-size: 1rem;
+    resize: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+    outline: none;
+    border-color: #D4A029;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* === SUBMIT BUTTON === */
+.contactForm button {
+    align-self: center;
+    background-color: #D4A029;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contactForm button:hover {
+    background-color: #D4A029;
+    transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .sideMenu {
+        display: none;
+    }
+
+    .contactMain {
+        margin-left: 0;
+        padding: 2rem 1rem;
+    }
+
+    .contactSection {
+        width: 90%;
+        padding: 2rem 1.5rem;
+    }
+
+    .contactSection h2 {
+        font-size: 1.6rem;
+    }
+
+    header {
+        padding: 1rem 2rem;
+    }
+}

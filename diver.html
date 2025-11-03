@@ -1,3 +1,4 @@
+<!--raymond philippe nyfeler-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,17 +7,68 @@
     <link rel="stylesheet" href="style/diver.css"/>
 </head>
 <body>
-<header>
-    <div><a href="index.html"><img src="images/logoBlanc.png" width="60px" height="auto"></a></div>
-    <div>
+<header><div>
+    <input type="checkbox" id="drawerToggle" hidden>
+    <label for="drawerToggle" class="menuBtn">☰</label>
+    <aside class="sideDrawer">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="#">Contact</a>
+            <a href="dress.html">Montre Habillée</a>
+            <a href="diver.html">Montre de Plongée</a>
+            <a href="#">Services</a>
+            <a href="contact.html">Contact</a>
         </nav>
-    </div>
+    </aside>
+    <div><a href="index.html"><img src="images/logoBlanc.png" width="100px" height="auto"></a></div>
+</div>
 </header>
 <main>
+<section class="diverHero">
+    <div class="diverHeroContent">
+        <a href="#infoSection" class="diverHeroLink">
+            <h1>Explore the Depths</h1>
+        </a>
+    </div>
+</section>
+<section id="infoSection" class="infoSection">
+    <section id="collections" class="contentSection">
+        <!-- Boîte 1 : Omega -->
+        <div class="contentBox imageLeft">
+            <div class="contentImage">
+                <img src="images/omega1.jpg" alt="Montre de plongée Omega Seamaster">
+            </div>
+            <div class="contentText">
+                <h2>Collection Omega Seamaster</h2>
+                <p>
+                    L’Omega Seamaster incarne l’excellence de la plongée :
+                    un parfait équilibre entre élégance, précision et robustesse.
+                    Conçue pour résister aux profondeurs extrêmes tout en conservant
+                    une sophistication intemporelle à la surface.
+                </p>
+                <a href="#" class="learnMore">Explorer la collection →</a>
+            </div>
+        </div>
 
+        <!-- Boîte 2 : Rolex -->
+        <div class="contentBox imageRight">
+            <div class="contentText">
+                <h2>Rolex Submariner</h2>
+                <p>
+                    Depuis 1953, la Rolex Submariner définit la référence
+                    des montres de plongée professionnelles.
+                    Son design emblématique, ses matériaux d’exception
+                    et sa fiabilité inégalée en font une véritable légende,
+                    sous l’eau comme sur terre.
+                </p>
+                <a href="#" class="learnMore">Découvrir davantage →</a>
+            </div>
+            <div class="contentImage">
+                <img src="images/submariner.jpg" alt="Montre Rolex Submariner">
+            </div>
+        </div>
+    </section>
+</section>
+</main>
+</section>
 </main>
         <footer>
         </footer>

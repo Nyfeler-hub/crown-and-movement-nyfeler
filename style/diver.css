@@ -8,8 +8,10 @@ html, body {
     margin: 0;
     padding: 0;
     border: none;
-    background-color: black; /* keep your dark theme consistent */
+    background-color: black;
 }
+
+/* ===== HEADER & SIDEMENU ===== */
 .menuBtn {
     position: fixed;
     top: 20px;
@@ -18,7 +20,6 @@ html, body {
     cursor: pointer;
     z-index: 20;
     color: white;
-    /*background: rgba(0, 0, 0, 0.4);*/
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -33,13 +34,12 @@ html, body {
     left: -250px;
     width: 250px;
     height: 100%;
-    /* Frosted glass background */
     background: rgba(15, 15, 15, 0.3);
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     color: white;
     transition: left 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
-    opacity: 0; /* start hidden */
+    opacity: 0;
     padding: 6rem 2rem;
     z-index: 15;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
@@ -65,7 +65,6 @@ html, body {
     transform: translateX(6px);
 }
 
-
 #drawerToggle:checked ~ .sideDrawer {
     left: 0;
     opacity: 1;
@@ -83,6 +82,7 @@ html, body {
         box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
     }
 }
+
 header {
     position: fixed;
     top: 0;
@@ -110,21 +110,33 @@ nav a {
 nav a:hover {
     text-decoration: none;
 }
-/* Hero Section */
+
+/* ===== HERO SECTION WITH SCROLLABLE BACKGROUND + FADE ===== */
 .diverHero {
+    position: relative;
     height: 100vh;
-    background:
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%),
-            url("../images/divingWoman.jpg") center center / cover no-repeat;
+    background: url("../images/divingWoman.jpg") center center / cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
+/* Fade-to-black overlay */
+.diverHero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, #000 90%);
+    z-index: 1;
+}
+
+/* Text sits above the fade */
 .diverHeroLink {
     text-decoration: none;
     color: white;
+    position: relative;
+    z-index: 2;
 }
 
 .diverHeroLink h1 {
@@ -138,7 +150,7 @@ nav a:hover {
     opacity: 0.8;
 }
 
-/* Collection Section */
+/* ===== CONTENT SECTION ===== */
 .contentSection {
     display: flex;
     flex-direction: column;
@@ -147,12 +159,12 @@ nav a:hover {
     margin: 100px auto;
 }
 
-/* Boxes */
+/* ===== BOXES ===== */
 .contentBox {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 75%; /* 70–80% of screen width */
+    width: 75%;
     background-color: #0a0a0a;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -167,7 +179,7 @@ nav a:hover {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Text */
+/* ===== TEXT ===== */
 .contentText {
     flex: 0 0 70%;
     padding: 50px;
@@ -198,15 +210,14 @@ nav a:hover {
     color: #66ccff;
 }
 
-/* Image containers */
+/* ===== IMAGES ===== */
 .contentImage {
     flex: 0 0 30%;
-    height: 40vh; /* responsive height: 40% of viewport height */
+    height: 40vh;
     overflow: hidden;
-    border-radius: 0 2rem 2rem 0; /* rounded right corners */
+    border-radius: 0 2rem 2rem 0;
 }
 
-/* when image is on the left, round opposite corners */
 .imageLeft .contentImage {
     border-radius: 2rem 0 0 2rem;
 }
@@ -218,7 +229,7 @@ nav a:hover {
     display: block;
 }
 
-
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .contentBox {
         flex-direction: column;
@@ -227,8 +238,8 @@ nav a:hover {
 
     .contentImage {
         flex: 0 0 auto;
-        height: 30vh; /* smaller height on mobile */
-        border-radius: 2rem 2rem 0 0; /* rounded top corners when stacked */
+        height: 30vh;
+        border-radius: 2rem 2rem 0 0;
     }
 
     .contentText {

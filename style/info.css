@@ -10,6 +10,7 @@ body {
     color: white;
 }
 
+/* ===== HEADER & SIDEMENU ===== */
 .menuBtn {
     position: fixed;
     top: 20px;
@@ -61,10 +62,6 @@ body {
 #drawerToggle:checked ~ .sideDrawer {
     left: 0;
     opacity: 1;
-}
-#drawerToggle:checked ~ .sideDrawer {
-    left: 0;
-    opacity: 1;
     box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
     animation: drawerFocus 1.5s ease;
 }
@@ -109,10 +106,11 @@ nav a.active {
     color: #D4A029;
 }
 
+/* ===== HERO WITH SCROLLABLE BACKGROUND + FADE ===== */
 .scrollHero {
     position: relative;
     width: 100%;
-    height: 120vh;
+    height: 100vh;
     overflow: hidden;
 }
 .scrollBackground {
@@ -120,19 +118,20 @@ nav a.active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 150%;
-    background: url('../images/servin.jpg') center center / cover no-repeat;
+    height: 120%;
+    background: url('../images/servin.jpg') center center / cover no-repeat fixed;
     z-index: -1;
 }
+/* Fade overlay — now ignores clicks */
 .scrollBackground::after {
     content: "";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40vh;
-    background: linear-gradient(to bottom, rgba(15,15,15,0) 0%, #0F0F0F 100%);
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 0) 60%, #0F0F0F 100%);
+    pointer-events: none;
 }
+
+/* Text over background */
 .heroOverlay {
     position: sticky;
     top: 0;
@@ -141,7 +140,7 @@ nav a.active {
     text-align: center;
     color: white;
     padding-top: 20vh;
-    z-index: 2;
+    z-index: 5; /* ensures it's above background/fade */
 }
 .heroOverlay h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -155,6 +154,8 @@ nav a.active {
 .textHighlight {
     color: #D4A029;
 }
+
+/* ===== TABLE ===== */
 .watchTable {
     width: 100%;
     border-collapse: collapse;
@@ -163,49 +164,59 @@ nav a.active {
     overflow: hidden;
     box-shadow: 0 0 2rem rgba(0,0,0,0.6);
     backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 5; /* keeps links above fade overlay */
 }
-.watchTable th,
-.watchTable td {
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    font-size: clamp(0.8rem, 1.1vw, 1rem);
-}
+
+/* Table Header */
 .watchTable th {
     background-color: rgba(255,255,255,0.05);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #D4A029;
+    padding: 1rem;
 }
-.watchTable tr:last-child td {
-    border-bottom: none;
+
+/* Table Data */
+.watchTable td {
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.watchTable tr:hover {
-    background-color: rgba(255,255,255,0.05);
-    transition: background-color 0.3s ease;
+
+/* Each row is a clickable link */
+.rowLink {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
-.watchTable tbody tr:nth-child(odd) {
+.rowContent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+    align-items: center;
+}
+
+/* Subtle alternating rows */
+.watchTable tbody tr:nth-child(odd) .rowLink {
     background-color: rgba(255,255,255,0.03);
 }
 
-@media (max-width: 900px) {
-    .scrollHero {
-        height: auto;
-    }
-    .heroOverlay {
-        width: 90%;
-        padding-top: 10vh;
-    }
-    .watchTable th,
-    .watchTable td {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
-    .heroOverlay h1 {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-    }
+/* Hover effect (gold glow) */
+.watchTable tbody tr .rowLink:hover {
+    background-color: rgba(212, 160, 41, 0.15);
+    box-shadow: inset 0 0 20px rgba(212, 160, 41, 0.25);
+    transform: scale(1.01);
+    cursor: pointer;
 }
 
+/* Remove border from last row */
+.watchTable tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== INFO BOX SECTION ===== */
 .infoSection {
     width: 80%;
     margin: 5rem auto 6rem;
@@ -232,15 +243,6 @@ nav a.active {
     z-index: 1;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
-.infoBox img::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 1rem;
-    z-index: 2;
-    pointer-events: none;
-}
 .infoBox img:hover {
     transform: scale(1.03);
 }
@@ -258,7 +260,23 @@ nav a.active {
     line-height: 1.8;
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
+    .scrollHero {
+        height: auto;
+    }
+    .heroOverlay {
+        width: 90%;
+        padding-top: 10vh;
+    }
+    .watchTable th,
+    .watchTable td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    .heroOverlay h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
     .infoBox,
     .infoBox.reverse {
         flex-direction: column;
@@ -274,62 +292,4 @@ nav a.active {
     .infoText h2 {
         margin-top: 1.5rem;
     }
-}
-.watchTable {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: rgba(10,10,10,0.75);
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
-}
-
-/* Header */
-.watchTable th {
-    background-color: rgba(255,255,255,0.05);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #D4A029;
-    padding: 1rem;
-}
-
-/* Base cell styling */
-.watchTable td {
-    padding: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Each row as a full clickable link */
-.rowLink {
-    display: block;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-/* Grid layout inside row */
-.rowContent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    padding: 1rem;
-    align-items: center;
-}
-
-/* Subtle striping for readability */
-.watchTable tbody tr:nth-child(odd) .rowLink {
-    background-color: rgba(255,255,255,0.03);
-}
-
-/* Gold hover effect for all body rows */
-.watchTable tbody tr .rowLink:hover {
-    background-color: rgba(212, 160, 41, 0.15);
-    box-shadow: inset 0 0 20px rgba(212, 160, 41, 0.25);
-    transform: scale(1.01);
-    cursor: pointer;
-}
-
-/* Remove last row border */
-.watchTable tr:last-child td {
-    border-bottom: none;
 }

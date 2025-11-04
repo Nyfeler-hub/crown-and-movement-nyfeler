@@ -1,31 +1,136 @@
-<!--raymond philippe nyfeler-->
+<!-- raymond philippe nyfeler 04.11.25 -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Crown and Movement</title>
-    <link rel="stylesheet" href="style/dress.css"/>
+    <meta charset="UTF-8" />
+    <title>Montre Habillée – Crown and Movement</title>
+    <link rel="stylesheet" href="style/dress.css" />
 </head>
+
 <body>
-<header><div>
-    <input type="checkbox" id="drawerToggle" hidden>
-    <label for="drawerToggle" class="menuBtn">☰</label>
-    <aside class="sideDrawer">
-        <nav>
-            <a href="dress.html">Montre Habillée</a>
-            <a href="diver.html">Montre de Plongée</a>
-            <a href="#">Services</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </aside>
-    <div><a href="index.html"><img src="images/logoBlanc.png" width="100px" height="auto"></a></div>
-</div>
-</header>
-<body>
-<section class="scrollableBackground">
-    <div class="contentWrapper">
-        <h2>Découvrez Nos Montres Habillées Élégantes</h2>
-        <p>Votre voyage vers l'élégance intemporelle commence ici.</p>
+<header>
+    <div>
+        <input type="checkbox" id="drawerToggle" hidden>
+        <label for="drawerToggle" class="menuBtn">☰</label>
+
+        <aside class="sideDrawer">
+            <nav>
+                <a href="index.html">Accueil</a>
+                <a href="dress.html" class="active">Montre Habillée</a>
+                <a href="diver.html">Montre de Plongée</a>
+                <a href="chrono.html">Chronographe</a>
+                <a href="info.html">Histoire de l'horlogerie</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </aside>
+
+        <div>
+            <a href="index.html">
+                <img src="images/logoBlanc.png" width="100px" height="auto" alt="Logo Crown and Movement">
+            </a>
+        </div>
     </div>
-</section>
+</header>
+
+<main>
+    <section class="dressHero">
+        <div class="heroContent">
+            <a href="#mainText" class="heroLink">
+                <h1>La <span class="textHighlight">Montre Habillée</span></h1>
+                <p>Symbole d’élégance et de discrétion, la montre habillée incarne l’essence même du raffinement horloger.</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="philosophy fadeIn">
+        <p>
+            Née dans les salons élégants du XXᵉ siècle, la montre habillée est un bijou discret conçu pour se glisser sous la manche d’un costume.
+            Finesse, sobriété et équilibre sont ses maîtres mots — une expression du goût plus que de la fonction.
+            Elle est le choix des esthètes, des connaisseurs et des amateurs d’élégance intemporelle.
+        </p>
+    </section>
+
+    <section id="mainText" class="designDetails">
+        <h2><span class="textHighlight">Détails</span> du Design</h2>
+        <div class="detailsGrid">
+            <div class="detailCard">
+                <h3>Boîtier Fin</h3>
+                <p>Un profil mince conçu pour se glisser sans effort sous la manche d’un costume.</p>
+            </div>
+            <div class="detailCard">
+                <h3>Cadran Épuré</h3>
+                <p>Un design minimaliste, souvent sans chiffres, pour une élégance absolue.</p>
+            </div>
+            <div class="detailCard">
+                <h3>Bracelet Cuir</h3>
+                <p>Traditionnellement en cuir noir ou brun, il complète la sophistication du cadran.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline fadeIn">
+        <h2>Une <span class="textHighlight">Évolution</span> Élégante</h2>
+        <div class="timelineGrid">
+            <div class="timeCard">
+                <h4>1920s</h4>
+                <p>L’ère Art Déco : naissance de la montre habillée avec des lignes géométriques raffinées.</p>
+            </div>
+            <div class="timeCard">
+                <h4>1950s</h4>
+                <p>L’âge d’or du minimalisme : le design se simplifie pour un équilibre parfait.</p>
+            </div>
+            <div class="timeCard">
+                <h4>Aujourd’hui</h4>
+                <p>Tradition et modernité fusionnent — la montre habillée reste l’expression ultime du goût.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="models fadeIn">
+        <h2>Modèles <span class="textHighlight">Iconiques</span></h2>
+        <div class="modelGrid">
+            <div class="modelCard">
+                <img src="images/grandeComplication.jpg" alt="Patek Philippe Grande Complication">
+                <h3>Patek Philippe Grande Complication</h3>
+                <p>Chef-d’œuvre d’ingénierie horlogère, combinant précision, complications et esthétique intemporelle.</p>
+            </div>
+            <div class="modelCard">
+                <img src="images/reverso.jpg" alt="Jaeger-LeCoultre Reverso">
+                <h3>Jaeger-LeCoultre Reverso</h3>
+                <p>Une icône Art Déco née sur les terrains de polo.</p>
+            </div>
+            <div class="modelCard">
+                <img src="images/vacheron.webp" alt="Vacheron Constantin">
+                <h3>Vacheron Constantin Patrimony</h3>
+                <p>L’essence de l’élégance minimaliste : pureté des lignes, finesse extrême et héritage ininterrompu depuis 1755.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="styling fadeIn">
+        <div class="stylingText">
+            <h2>Comment la <span class="textHighlight">Porter</span></h2>
+            <p>
+                La montre habillée se porte avec <strong>confiance</strong> et <strong>discrétion</strong>.
+                Elle n’a pas besoin d’attirer l’attention ; sa beauté réside dans la subtilité de ses proportions et la pureté de ses lignes.
+                Placée au poignet d’un homme ou d’une femme de goût, elle complète la tenue sans jamais la dominer.
+            </p>
+            <p>
+                Traditionnellement portée lors d’occasions formelles, elle accompagne un <em>costume sombre</em>, une <em>chemise bien ajustée</em> et un <em>poignet nu</em> - sans bracelet ni bijou concurrent.
+                La montre habillée devient alors un <strong>symbole silencieux d’élégance</strong>, révélant davantage la personnalité que le statut.
+            </p>
+            <p>
+                Qu’elle soit en or, en acier poli ou en platine, elle reflète la lumière avec retenue, comme une signature de distinction.
+                Dans le monde de l’horlogerie, c’est l’art du <em>moins</em> qui exprime le <em>plus</em> : une montre habillée n’impose rien, mais elle dit tout.
+            </p>
+        </div>
+
+        <div class="stylingImage">
+            <img src="images/dressman.jpg" alt="Style de montre habillée">
+        </div>
+    </section>
+</main>
+
+<footer></footer>
 </body>
+</html>

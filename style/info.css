@@ -1,0 +1,335 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #0F0F0F;
+    color: white;
+}
+
+.menuBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+.sideDrawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.3);
+    backdrop-filter: blur(14px) saturate(160%);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+    color: white;
+    transition: left 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    padding: 6rem 2rem;
+    z-index: 15;
+}
+.sideDrawer:hover {
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(18px) saturate(180%);
+}
+.sideDrawer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.sideDrawer a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
+}
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+}
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    animation: drawerFocus 1.5s ease;
+}
+@keyframes drawerFocus {
+    0% {
+        box-shadow: 0 0 0 rgba(212, 160, 41, 0);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
+    }
+    100% {
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1rem,3vw,2rem) clamp(2rem,8vw,10rem);
+    z-index: 100;
+    background: transparent;
+}
+header img {
+    z-index: 101;
+    position: relative;
+    margin-left: 6rem;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+}
+nav a:hover,
+nav a.active {
+    color: #D4A029;
+}
+
+.scrollHero {
+    position: relative;
+    width: 100%;
+    height: 120vh;
+    overflow: hidden;
+}
+.scrollBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background: url('../images/servin.jpg') center center / cover no-repeat;
+    z-index: -1;
+}
+.scrollBackground::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(to bottom, rgba(15,15,15,0) 0%, #0F0F0F 100%);
+}
+.heroOverlay {
+    position: sticky;
+    top: 0;
+    width: min(85%, 1000px);
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    padding-top: 20vh;
+    z-index: 2;
+}
+.heroOverlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: clamp(2rem, 6vh, 5rem);
+}
+.heroOverlay p {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: #ccc;
+    margin-bottom: 3vh;
+}
+.textHighlight {
+    color: #D4A029;
+}
+.watchTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(10,10,10,0.75);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+}
+.watchTable th,
+.watchTable td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+}
+.watchTable th {
+    background-color: rgba(255,255,255,0.05);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #D4A029;
+}
+.watchTable tr:last-child td {
+    border-bottom: none;
+}
+.watchTable tr:hover {
+    background-color: rgba(255,255,255,0.05);
+    transition: background-color 0.3s ease;
+}
+.watchTable tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.03);
+}
+
+@media (max-width: 900px) {
+    .scrollHero {
+        height: auto;
+    }
+    .heroOverlay {
+        width: 90%;
+        padding-top: 10vh;
+    }
+    .watchTable th,
+    .watchTable td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    .heroOverlay h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+}
+
+.infoSection {
+    width: 80%;
+    margin: 5rem auto 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+.infoBox {
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+    position: relative;
+}
+.infoBox.reverse {
+    flex-direction: row-reverse;
+}
+.infoBox img {
+    width: 25%;
+    max-width: 320px;
+    border-radius: 1rem;
+    object-fit: cover;
+    position: relative;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
+    z-index: 1;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.infoBox img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    z-index: 2;
+    pointer-events: none;
+}
+.infoBox img:hover {
+    transform: scale(1.03);
+}
+.infoText {
+    width: 60%;
+}
+.infoText h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    color: #D4A029;
+}
+.infoText p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #ddd;
+    line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+    .infoBox,
+    .infoBox.reverse {
+        flex-direction: column;
+    }
+    .infoBox img {
+        width: 80%;
+        max-width: none;
+    }
+    .infoText {
+        width: 100%;
+        text-align: center;
+    }
+    .infoText h2 {
+        margin-top: 1.5rem;
+    }
+}
+.watchTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(10,10,10,0.75);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
+}
+
+/* Header */
+.watchTable th {
+    background-color: rgba(255,255,255,0.05);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #D4A029;
+    padding: 1rem;
+}
+
+/* Base cell styling */
+.watchTable td {
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Each row as a full clickable link */
+.rowLink {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Grid layout inside row */
+.rowContent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+    align-items: center;
+}
+
+/* Subtle striping for readability */
+.watchTable tbody tr:nth-child(odd) .rowLink {
+    background-color: rgba(255,255,255,0.03);
+}
+
+/* Gold hover effect for all body rows */
+.watchTable tbody tr .rowLink:hover {
+    background-color: rgba(212, 160, 41, 0.15);
+    box-shadow: inset 0 0 20px rgba(212, 160, 41, 0.25);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+/* Remove last row border */
+.watchTable tr:last-child td {
+    border-bottom: none;
+}

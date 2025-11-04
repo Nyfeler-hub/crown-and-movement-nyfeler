@@ -191,6 +191,11 @@ body {
         box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
     }
 }
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
+}
 header {
     position: fixed;
     top: 0;

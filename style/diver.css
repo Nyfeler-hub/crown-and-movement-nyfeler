@@ -22,7 +22,11 @@ html, body {
     padding: 5px 10px;
     border-radius: 8px;
 }
-
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
+}
 .sideDrawer {
     position: fixed;
     top: 0;

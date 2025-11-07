@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Contact</title>
-    <link rel="stylesheet" href="style/contact.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crédits</title>
+    <link rel="stylesheet" href="style/credits.css">
 </head>
+<body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Montre Habillée</title>
+    <link rel="stylesheet" href="style/dress.css" />
+</head>
+
 <body>
 <header>
     <div>
@@ -13,13 +23,13 @@
         <aside class="sideDrawer">
             <nav>
                 <a href="index.html">Accueil</a>
-                <a href="dress.html">Montre Habillée</a>
+                <a href="dress.html" >Montre Habillée</a>
                 <a href="diver.html">Montre de Plongée</a>
                 <a href="chrono.html">Chronographe</a>
                 <a href="collection.html" >Boutique</a>
                 <a href="info.html">Histoire de l'horlogerie</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="credits.html">Crédits</a>
+                <a href="contact.html">Contact</a>
+                <a href="credits.html" class="active">Crédits</a>
             </nav>
         </aside>
         <div>
@@ -29,37 +39,28 @@
         </div>
     </div>
 </header>
-<main class="contactMain">
-<section class="contactSection">
-    <h2>Contactez-nous</h2>
-    <p>Vous avez une question, une demande spéciale ou besoin d’informations sur nos montres ?
-        Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les plus brefs délais.</p>
+<section class="creditsSection">
+    <div class="creditsContainer">
+        <h3>Sources visuelles</h3>
+        <ul>
+            <li>Images libres de droits provenant de <a href="https://unsplash.com" target="_blank">Unsplash</a>, utilisées conformément à leur licence libre.</li>
 
-    <form class="contactForm" method="post">
-        <div class="formGroup">
-            <label for="name">Nom complet</label>
-            <input type="text" id="name" name="name" placeholder="Votre nom" required autofocus>
-        </div>
-
-        <div class="formGroup">
-            <label for="email">Adresse e-mail</label>
-            <input type="email" id="email" name="email" placeholder="Votre adresse e-mail" required>
-        </div>
-
-        <div class="formGroup">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" name="subject" placeholder="Sujet de votre message">
-        </div>
-
-        <div class="formGroup">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" placeholder="Votre message..." required></textarea>
-        </div>
-
-        <button type="submit">Envoyer</button>
-    </form>
+            <li>Photographies de montres issues de sources officielles ou presse :
+                <ul>
+                    <li><a href="https://press.iwc.com" target="_blank">IWC Schaffhausen – press.iwc.com</a></li>
+                    <li><a href="https://press.jaeger-lecoultre.com/media-library/" target="_blank">Jaeger-LeCoultre – Media Library</a></li>
+                    <li><a href="https://www.shreve.com" target="_blank">Shreve.com – horlogerie de luxe</a></li>
+                </ul>
+            </li>
+            <li></li>
+            <li>Maquettes et design de l’interface réalisés avec <a href="https://www.figma.com" target="_blank">Figma</a>.</li>
+            <li>Les logos et marques (Rolex, Omega, etc.) sont la propriété de leurs détenteurs respectifs et apparaissent uniquement à des fins illustratives et non commerciales.</li>
+        </ul>
+        <p class="disclaimer">
+            Ce site a été conçu à des fins pédagogiques. Aucune transaction réelle n’est effectuée.
+        </p>
+    </div>
 </section>
-</main>
 <footer class="siteFooter">
     <div class="footerContainer">
         <div class="footerColumn">
@@ -72,6 +73,7 @@
                 <li><a href="contact.html">Formulaire de Contacte</a></li>
                 <li><a href="info.html">Info</a></li>
                 <li><a href="collection.html">Boutique</a></li>
+                <li><a href="credits.html">Crédits</a></li>
             </ul>
         </div>
         <div class="footerColumn">

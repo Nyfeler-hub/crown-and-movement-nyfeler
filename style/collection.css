@@ -1,19 +1,17 @@
 html {
     scroll-behavior: smooth;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
 }
 
-html, body {
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    border: none;
-    background-color: black;
+    background-color: #0F0F0F;
+    color: white;
     overflow-x: hidden;
 }
 
-/* === HEADER === */
+/* ===== HEADER & SIDEMENU ===== */
 .menuBtn {
     position: fixed;
     top: 20px;
@@ -22,71 +20,63 @@ html, body {
     cursor: pointer;
     z-index: 20;
     color: white;
-    /*background: rgba(0, 0, 0, 0.4);*/
     padding: 5px 10px;
     border-radius: 8px;
 }
-.sideDrawer a:hover,
-.sideDrawer a.active {
-    color: #D4A029;
-    transform: translateX(6px);
-}
+
 .sideDrawer {
     position: fixed;
     top: 0;
     left: -250px;
     width: 250px;
     height: 100%;
-    /* Frosted glass background */
     background: rgba(15, 15, 15, 0.3);
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
-    color: white;
-    transition: left 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
-    opacity: 0; /* start hidden */
-    padding: 6rem 2rem;
-    z-index: 15;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+    color: white;
+    transition: left 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    padding: 6rem 2rem;
+    z-index: 15;
+}
+
+.sideDrawer:hover {
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(18px) saturate(180%);
 }
 
 .sideDrawer nav {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .sideDrawer a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
-    padding: 0.5rem 0;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.sideDrawer a:hover {
+.sideDrawer a:hover,
+.sideDrawer a.active {
     color: #D4A029;
     transform: translateX(6px);
 }
-
 
 #drawerToggle:checked ~ .sideDrawer {
     left: 0;
     opacity: 1;
     box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
-    animation: drawerFocus 1.5s ease;
 }
-@keyframes drawerFocus {
-    0% {
-        box-shadow: 0 0 0 rgba(0, 170, 255, 0);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
-    }
-    100% {
-        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
-    }
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
 }
+
 header {
     position: fixed;
     top: 0;
@@ -105,136 +95,124 @@ header img {
     position: relative;
     margin-left: 6rem;
 }
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    animation: drawerFocus 1.5s ease;
+}
+@keyframes drawerFocus {
+    0% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
+    }
+    100% {
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+}
+/*SECTION MAGASIN*/
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-nav a:hover {
-    text-decoration: none;
-}
-/* === MAIN CONTACT SECTION === */
-.contactMain {
-    margin-top: 100px; /* offset for header */
-    margin-left: 250px; /* offset for side menu */
+.storeSection {
+    margin-top: 120px;
     padding: 4rem 2rem;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    color: white;
     background: black;
 }
 
-.contactSection {
-    background-color: #0a0a0a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    width: 60%;
-    max-width: 700px;
-    padding: 3rem;
-    text-align: center;
-    color: white;
-}
-
-.contactSection h2 {
-    font-size: 2rem;
+.storeSection h2 {
+    font-size: 2.5rem;
+    color: #D4A029;
     margin-bottom: 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
-.contactSection p {
-    font-size: 1.1rem;
+.storeSection p {
     color: #ccc;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
 }
 
-/* === FORM STYLING === */
-.contactForm {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: left;
+/* Grid of products */
+.storeGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 4rem 3rem;
+    justify-items: center;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+/* Product card styling */
+.productCard {
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border: 1px solid rgba(212, 160, 41, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.formGroup label {
-    font-weight: 500;
-    font-size: 1rem;
-    color: #dcdcdc;
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 160, 41, 0.3);
+    border-color: rgba(212, 160, 41, 0.5);
 }
 
-.contactForm input,
-.contactForm textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 0.8rem 1rem;
-    color: white;
-    font-size: 1rem;
-    resize: none;
-    transition: border-color 0.3s ease, background 0.3s ease;
+.productCard img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
-.contactForm input:focus,
-.contactForm textarea:focus {
-    outline: none;
-    border-color: #D4A029;
-    background: rgba(255, 255, 255, 0.08);
+.productCard h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
-/* === SUBMIT BUTTON === */
-.contactForm button {
-    align-self: center;
-    background-color: #D4A029;
-    color: white;
+.price {
+    color: #D4A029;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Button */
+.productCard button {
+    background: #D4A029;
+    color: black;
     border: none;
-    border-radius: 0.5rem;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+    border-radius: 6px;
+    padding: 0.8rem 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.contactForm button:hover {
-    background-color: #D4A029;
+.productCard button:hover {
+    background: #b89024;
     transform: translateY(-2px);
 }
 
-/* === RESPONSIVE === */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-    .sideMenu {
-        display: none;
+    .storeSection h2 {
+        font-size: 2rem;
     }
-
-    .contactMain {
-        margin-left: 0;
-        padding: 2rem 1rem;
-    }
-
-    .contactSection {
-        width: 90%;
-        padding: 2rem 1.5rem;
-    }
-
-    .contactSection h2 {
-        font-size: 1.6rem;
-    }
-
-    header {
-        padding: 1rem 2rem;
+    .productCard img {
+        height: 220px;
     }
 }
-/* === FOOTER FROSTED DESIGN — CROWN AND MOVEMENT === */
 .siteFooter {
     position: relative;
     width: 100%;

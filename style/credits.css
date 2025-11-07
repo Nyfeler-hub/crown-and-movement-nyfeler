@@ -4,14 +4,16 @@ html {
     background-color: #000;
     color: #fff;
 }
+
 html, body {
     margin: 0;
     padding: 0;
     border: none;
     background-color: black;
+    overflow-x: hidden;
 }
 
-/* ===== HEADER & SIDEMENU ===== */
+/* === HEADER === */
 .menuBtn {
     position: fixed;
     top: 20px;
@@ -20,6 +22,7 @@ html, body {
     cursor: pointer;
     z-index: 20;
     color: white;
+    /*background: rgba(0, 0, 0, 0.4);*/
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -34,12 +37,13 @@ html, body {
     left: -250px;
     width: 250px;
     height: 100%;
+    /* Frosted glass background */
     background: rgba(15, 15, 15, 0.3);
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     color: white;
     transition: left 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
-    opacity: 0;
+    opacity: 0; /* start hidden */
     padding: 6rem 2rem;
     z-index: 15;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
@@ -65,6 +69,7 @@ html, body {
     transform: translateX(6px);
 }
 
+
 #drawerToggle:checked ~ .sideDrawer {
     left: 0;
     opacity: 1;
@@ -76,13 +81,12 @@ html, body {
         box-shadow: 0 0 0 rgba(0, 170, 255, 0);
     }
     50% {
-        box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
     }
     100% {
         box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
     }
 }
-
 header {
     position: fixed;
     top: 0;
@@ -110,147 +114,115 @@ nav a {
 nav a:hover {
     text-decoration: none;
 }
-
-/* ===== HERO SECTION WITH SCROLLABLE BACKGROUND + FADE ===== */
-.diverHero {
-    position: relative;
-    height: 100vh;
-    background: url("../images/divingWoman.jpg") center center / cover no-repeat fixed;
+/* === CREDITS PAGE === */
+.creditsSection {
+    min-height: 100vh;
+    padding: 8rem 2rem 5rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-/* Fade-to-black overlay */
-.diverHero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, #000 90%);
-    z-index: 1;
-}
-
-/* Text sits above the fade */
-.diverHeroLink {
-    text-decoration: none;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
     color: white;
-    position: relative;
-    z-index: 2;
 }
 
-.diverHeroLink h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    transition: opacity 0.3s ease;
-}
-
-.diverHeroLink:hover h1 {
-    opacity: 0.8;
-}
-
-/* ===== CONTENT SECTION ===== */
-.contentSection {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-    margin: 100px auto;
-}
-
-/* ===== BOXES ===== */
-.contentBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 75%;
-    background-color: #0a0a0a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.creditsContainer {
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(212, 160, 41, 0.25);
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 3rem 2rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    animation: fadeIn 1.2s ease;
 }
 
-.contentBox:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
-    border-color: rgba(255, 255, 255, 0.2);
+/* Headings */
+.creditsContainer h2 {
+    text-align: center;
+    color: #D4A029;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
 }
 
-/* ===== TEXT ===== */
-.contentText {
-    flex: 0 0 70%;
-    padding: 50px;
+.creditsContainer h3 {
+    color: #D4A029;
+    font-size: 1.3rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.contentText h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.contentText p {
+/* Paragraphs and lists */
+.creditsContainer p {
+    color: #ccc;
     font-size: 1.1rem;
+    margin-bottom: 0.8rem;
     line-height: 1.7;
-    color: #dcdcdc;
-    margin-bottom: 25px;
 }
 
-.learnMore {
-    color: #00aaff;
+.creditsContainer ul {
+    margin-left: 1.2rem;
+    padding-left: 1rem;
+}
+
+.creditsContainer li {
+    color: #ccc;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.creditsContainer a {
+    color: #D4A029;
     text-decoration: none;
-    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-.learnMore:hover {
-    color: #66ccff;
+.creditsContainer a:hover {
+    color: #b89024;
 }
 
-/* ===== IMAGES ===== */
-.contentImage {
-    flex: 0 0 30%;
-    height: 40vh;
-    overflow: hidden;
-    border-radius: 0 2rem 2rem 0;
+/* Disclaimer */
+.disclaimer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: #aaa;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(212, 160, 41, 0.25);
+    padding-top: 1.5rem;
 }
 
-.imageLeft .contentImage {
-    border-radius: 2rem 0 0 2rem;
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.contentImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* ===== RESPONSIVE ===== */
+/* Responsive design */
 @media (max-width: 768px) {
-    .contentBox {
-        flex-direction: column;
-        width: 90%;
+    .creditsContainer {
+        padding: 2rem 1.5rem;
     }
 
-    .contentImage {
-        flex: 0 0 auto;
-        height: 30vh;
-        border-radius: 2rem 2rem 0 0;
-    }
-
-    .contentText {
-        padding: 3rem 2rem;
-    }
-
-    .contentText h2 {
+    .creditsContainer h2 {
         font-size: 1.8rem;
     }
+
+    .creditsContainer h3 {
+        font-size: 1.1rem;
+    }
 }
-/* === FOOTER FROSTED DESIGN — CROWN AND MOVEMENT === */
 .siteFooter {
     position: relative;
     width: 100%;

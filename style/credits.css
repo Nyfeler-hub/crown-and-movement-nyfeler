@@ -123,6 +123,7 @@ nav a:hover {
     align-items: flex-start;
     background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
     color: white;
+    overflow-x: hidden; /* ✅ prevents sideways scroll */
 }
 
 .creditsContainer {
@@ -131,20 +132,21 @@ nav a:hover {
     -webkit-backdrop-filter: blur(12px) saturate(160%);
     border: 1px solid rgba(212, 160, 41, 0.25);
     border-radius: 20px;
-    padding: 3rem 2rem;
-    max-width: 800px;
+    padding: 3rem 2.5rem;
+    max-width: 850px;
     width: 100%;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     text-align: left;
     animation: fadeIn 1.2s ease;
+    box-sizing: border-box;
 }
 
 /* Headings */
 .creditsContainer h2 {
     text-align: center;
     color: #D4A029;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
     letter-spacing: 1px;
 }
 
@@ -185,6 +187,47 @@ nav a:hover {
 
 .creditsContainer a:hover {
     color: #b89024;
+}
+
+/* Disclaimer */
+.disclaimer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: #aaa;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(212, 160, 41, 0.25);
+    padding-top: 1.5rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .creditsContainer {
+        padding: 2rem 1.5rem;
+    }
+
+    .creditsContainer h2 {
+        font-size: 1.9rem;
+    }
+
+    .creditsContainer h3 {
+        font-size: 1.1rem;
+    }
+
+    .creditsContainer ul {
+        margin-left: 0.8rem;
+    }
 }
 
 /* Disclaimer */

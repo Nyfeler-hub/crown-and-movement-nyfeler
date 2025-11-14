@@ -1,0 +1,425 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0F0F0F;
+    color: white;
+    overflow-x: hidden;
+}
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+/* ===== HEADER & SIDEMENU ===== */
+.menuBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.sideDrawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.3);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+    color: white;
+    transition: left 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    padding: 6rem 2rem;
+    z-index: 15;
+}
+
+.sideDrawer:hover {
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(18px) saturate(180%);
+}
+
+.sideDrawer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.sideDrawer a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
+}
+
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+}
+.sideDrawer a:hover,
+.sideDrawer a.active {
+    color: #D4A029;
+    transform: translateX(6px);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem) clamp(2rem, 8vw, 10rem);
+    z-index: 100;
+    background: transparent;
+}
+
+header img {
+    z-index: 101;
+    position: relative;
+    margin-left: 6rem;
+}
+#drawerToggle:checked ~ .sideDrawer {
+    left: 0;
+    opacity: 1;
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    animation: drawerFocus 1.5s ease;
+}
+@keyframes drawerFocus {
+    0% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(212, 160, 41, 0.4);
+    }
+    100% {
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* ===== HERO WITH SCROLLABLE BACKGROUND + FADE ===== */
+.scrollHero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.scrollBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: url('../images/servin.jpg') center center / cover no-repeat fixed;
+    z-index: -1;
+}
+.scrollBackground::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 0) 60%, #0F0F0F 100%);
+    pointer-events: none;
+}
+/* Text over background */
+.heroOverlay {
+    position: sticky;
+    top: 0;
+    width: min(85%, 1000px);
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    padding-top: 20vh;
+    z-index: 5;
+}
+.heroOverlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: clamp(2rem, 6vh, 5rem);
+}
+.heroOverlay p {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: #ccc;
+    margin-bottom: 3vh;
+}
+.textHighlight {
+    color: #D4A029;
+}
+/* ===== TABLE ===== */
+.watchTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(10,10,10,0.75);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 5; /* keeps links above fade overlay */
+}
+/* Table Header */
+.watchTable th {
+    background-color: rgba(255,255,255,0.05);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #D4A029;
+    padding: 1rem;
+}
+/* Table Data */
+.watchTable td {
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+/* Each row is a clickable link */
+.rowLink {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.rowContent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+    align-items: center;
+}
+/* Subtle alternating rows */
+.watchTable tbody tr:nth-child(odd) .rowLink {
+    background-color: rgba(255,255,255,0.03);
+}
+
+/* Hover effect (gold glow) */
+.watchTable tbody tr .rowLink:hover {
+    background-color: rgba(212, 160, 41, 0.15);
+    box-shadow: inset 0 0 20px rgba(212, 160, 41, 0.25);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+/* Remove border from last row */
+.watchTable tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== INFO BOX SECTION ===== */
+.infoSection {
+    width: 80%;
+    margin: 5rem auto 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+.infoBox {
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+    position: relative;
+}
+.infoBox.reverse {
+    flex-direction: row-reverse;
+}
+.infoBox img {
+    width: 25%;
+    max-width: 320px;
+    border-radius: 1rem;
+    object-fit: cover;
+    position: relative;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.6);
+    z-index: 1;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.infoBox img:hover {
+    transform: scale(1.03);
+}
+.infoText {
+    width: 60%;
+}
+.infoText h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    color: #D4A029;
+}
+.infoText p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .scrollHero {
+        height: auto;
+    }
+    .heroOverlay {
+        width: 90%;
+        padding-top: 10vh;
+    }
+    .watchTable th,
+    .watchTable td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    .heroOverlay h1 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+    .infoBox,
+    .infoBox.reverse {
+        flex-direction: column;
+    }
+    .infoBox img {
+        width: 80%;
+        max-width: none;
+    }
+    .infoText {
+        width: 100%;
+        text-align: center;
+    }
+    .infoText h2 {
+        margin-top: 1.5rem;
+    }
+}
+/* === FOOTER FROSTED DESIGN — CROWN AND MOVEMENT === */
+.siteFooter {
+    position: relative;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    border-top: 1px solid rgba(212, 160, 41, 0.3); /* fine ligne dorée */
+    color: white;
+    padding: 3rem 2rem 1.5rem;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Grille de 3 colonnes */
+.footerContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Titres des colonnes */
+.footerColumn h3 {
+    font-size: 1.3rem;
+    color: #D4A029;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Liste de liens */
+.footerColumn ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footerColumn li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.footerColumn a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footerColumn a:hover {
+    color: #D4A029;
+    transform: translateX(4px);
+}
+
+/* Texte À propos */
+.footerColumn p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Ligne du bas */
+.footerBottom {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212, 160, 41, 0.3);
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .siteFooter {
+        padding: 1.5rem 1rem; /* reduce top/bottom space */
+    }
+
+    .footerContainer {
+        gap: 1.2rem; /* smaller gap between columns */
+    }
+
+    .footerColumn h3 {
+        font-size: 1rem; /* smaller titles */
+        margin-bottom: 0.5rem;
+    }
+
+    .footerColumn p,
+    .footerColumn li,
+    .footerColumn a {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+    .footerColumn {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .footerBottom {
+        font-size: 0.8rem;
+        margin-top: 1.5rem;
+        padding-top: 0.8rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .siteFooter {
+        padding: 1rem 0.8rem;
+    }
+
+    .footerColumn h3 {
+        font-size: 0.95rem;
+    }
+
+    .footerColumn p,
+    .footerColumn a,
+    .footerColumn li {
+        font-size: 0.85rem;
+    }
+
+    .footerBottom {
+        font-size: 0.75rem;
+    }
+}

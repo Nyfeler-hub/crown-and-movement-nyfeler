@@ -212,6 +212,18 @@ header img {
     transform: translateY(-2px);
 }
 
+button[type="reset"]{
+    background-color: white;
+    color: black;
+}
+button[type="reset"]:hover{
+    background-color: white;
+    transform: translateY(-2px);
+}
+.buttonSpace{
+    display: flex;
+    justify-content: space-around;
+}
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
     .sideMenu {
